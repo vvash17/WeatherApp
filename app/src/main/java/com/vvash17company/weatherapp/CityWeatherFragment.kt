@@ -32,12 +32,16 @@ class CityWeatherFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.current_weather_fragment, container, false)
+        var view = inflater.inflate(R.layout.weather_layout, container, false)
         cityName = view.findViewById(R.id.cityName)
         time = view.findViewById(R.id.time)
         degrees = view.findViewById(R.id.degrees)
         perceived = view.findViewById(R.id.perceived)
 
+        cityName?.text = currentWeatherData?.mainWeatherData?.cityName
+        time?.text = currentWeatherData?.mainWeatherData?.unixTime.toString()
+        degrees?.text = currentWeatherData?.mainWeatherData?.realDegree.toString()
+        perceived?.text = currentWeatherData?.mainWeatherData?.perceivedDegree.toString()
         //TODO shevseba gaakete
         return view
     }

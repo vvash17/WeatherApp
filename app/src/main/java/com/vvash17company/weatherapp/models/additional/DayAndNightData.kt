@@ -1,4 +1,8 @@
 package com.vvash17company.weatherapp.models.additional
 
-class DayAndNightData {
-}
+data class DayAndNightData(
+    var name: String,
+    var iconId: String,
+    var dayUnixTime: Long,
+    var nightUnixTime: Long
+)
