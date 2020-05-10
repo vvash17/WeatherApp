@@ -26,14 +26,9 @@ import java.util.*
 class CityWeatherFragment : Fragment() {
 
     private lateinit var currentWeatherData: CityWeatherData
-    private lateinit var cityName: TextView
-    private lateinit var time: TextView
-    private lateinit var degrees: TextView
-    private lateinit var perceived: TextView
-    private lateinit var currentWeatherLayout: ConstraintLayout
+
 
     @RequiresApi(Build.VERSION_CODES.N)
-    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,11 +39,23 @@ class CityWeatherFragment : Fragment() {
         )
 
         var view = inflater.inflate(R.layout.weather_layout, container, false)
-        cityName = view.findViewById(R.id.cityName)
-        time = view.findViewById(R.id.time)
-        degrees = view.findViewById(R.id.degrees)
-        perceived = view.findViewById(R.id.perceived)
-        currentWeatherLayout = view.findViewById(R.id.currentWeatherLayout)
+        initializeCurrentWeatherLayout(view)
+        initializePrecipidationLayout(view, currentWeatherData.additionWeatherData.precipidation)
+        initializeHumidityLayout(view, currentWeatherData.additionWeatherData.humidity)
+        initializeWindSpeedLayout(view, currentWeatherData.additionWeatherData.windSpeed)
+        initializeDayAndNightLayout(view, currentWeatherData.additionWeatherData.dayAndNight)
+
+        return view
+    }
+
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun initializeCurrentWeatherLayout(view: View) {
+        val cityName: TextView = view.findViewById(R.id.cityName)
+        val time: TextView = view.findViewById(R.id.time)
+        val degrees: TextView = view.findViewById(R.id.degrees)
+        val perceived: TextView = view.findViewById(R.id.perceived)
+        val currentWeatherLayout: ConstraintLayout = view.findViewById(R.id.currentWeatherLayout)
 
         cityName.text = currentWeatherData.mainWeatherData.cityName
         val currentDate = Date(currentWeatherData.mainWeatherData.unixTime)
@@ -74,13 +81,6 @@ class CityWeatherFragment : Fragment() {
         val perceivedCelsius: Double? =
             currentWeatherData.mainWeatherData.perceivedDegree.minus(273.15)
         perceived.text = "Perceived " + "%.1f".format(perceivedCelsius) + "\t℃"
-
-        initializePrecipidationLayout(view, currentWeatherData.additionWeatherData.precipidation)
-        initializeHumidityLayout(view, currentWeatherData.additionWeatherData.humidity)
-        initializeWindSpeedLayout(view, currentWeatherData.additionWeatherData.windSpeed)
-        initializeDayAndNightLayout(view, currentWeatherData.additionWeatherData.dayAndNight)
-
-        return view
     }
 
     @SuppressLint("SetTextI18n")
