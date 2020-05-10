@@ -73,7 +73,7 @@ class CityWeatherFragment : Fragment() {
         degrees.text = "%.1f".format(degreesCelsius) + "\t℃"
         val perceivedCelsius: Double? =
             currentWeatherData.mainWeatherData.perceivedDegree.minus(273.15)
-        perceived.text = "Perceived : " + "%.1f".format(perceivedCelsius) + "\t℃"
+        perceived.text = "Perceived " + "%.1f".format(perceivedCelsius) + "\t℃"
 
         initializePrecipidationLayout(view, currentWeatherData.additionWeatherData.precipidation)
         initializeHumidityLayout(view, currentWeatherData.additionWeatherData.humidity)
