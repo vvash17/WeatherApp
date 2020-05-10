@@ -6,5 +6,7 @@ data class WeatherData(
     @SerializedName("wind") var wind: Wind,
     @SerializedName("dt") var unixTime: Long,
     @SerializedName("main") var weatherDetails: WeatherDetails,
-    @SerializedName("sys") var dayDetails: DayDetails
+    @SerializedName("sys") var dayDetails: DayDetails,
+    @SerializedName("weather") var weather: List<Weather>,
+    @SerializedName("clouds") var precipidation: Clouds
 )

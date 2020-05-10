@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecastsRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/lowerContentRightGuideline"
+        app:layout_constraintStart_toStartOf="@id/lowerContentLeftGuideline"
+        app:layout_constraintTop_toTopOf="@id/afterAdditionalDetailsPad" />
+
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/additionalWeatherDetailsGuideline"
+        app:layout_constraintEnd_toEndOf="@id/lowerContentRightGuideline"
+        app:layout_constraintStart_toStartOf="@id/lowerContentLeftGuideline"
+        app:layout_constraintTop_toTopOf="@id/afterCurrentWeatherPad" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/progressBarBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.70" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/progressBarTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/progressBarBottom"
+        app:layout_constraintEnd_toEndOf="@id/lowerContentRightGuideline"
+        app:layout_constraintStart_toStartOf="@id/lowerContentLeftGuideline"
+        app:layout_constraintTop_toTopOf="@id/progressBarTop" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/lowerContentRightGuideline"
@@ -58,13 +103,12 @@
 
         <ImageView
             android:id="@+id/weatherIcon"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/lowerGuideline"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintStart_toStartOf="@id/contentSeparatorGuideline"
-            app:layout_constraintTop_toTopOf="@id/upperGuideline"
-            app:srcCompat="@android:drawable/divider_horizontal_bright" />
+            app:layout_constraintTop_toTopOf="@id/upperGuideline" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/leftGuideline"
@@ -152,7 +196,6 @@
         android:id="@+id/additionalWeatherFragments"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/border"
         app:layout_constraintBottom_toTopOf="@id/additionalWeatherDetailsGuideline"
         app:layout_constraintEnd_toEndOf="@id/lowerContentRightGuideline"
         app:layout_constraintStart_toStartOf="@id/lowerContentLeftGuideline"
@@ -164,8 +207,10 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/thirdGuideline"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/upperGuidelineD"
@@ -185,18 +230,18 @@
                 android:id="@+id/iconImageD"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
                 app:layout_constraintBottom_toTopOf="@id/upperGuidelineD"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/attributeNameD"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@id/lowerGuidelineD"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -208,7 +253,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -244,18 +288,18 @@
                 android:id="@+id/iconImageW"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
                 app:layout_constraintBottom_toTopOf="@id/upperGuidelineW"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/attributeNameW"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@id/lowerGuidelineW"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -267,7 +311,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -303,18 +346,18 @@
                 android:id="@+id/iconImageH"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
                 app:layout_constraintBottom_toTopOf="@id/upperGuidelineH"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/attributeNameH"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@id/lowerGuidelineH"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -326,7 +369,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -362,18 +404,18 @@
                 android:id="@+id/iconImageP"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
                 app:layout_constraintBottom_toTopOf="@id/upperGuidelineP"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/attributeNameP"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@id/lowerGuidelineP"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -385,7 +427,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:gravity="center_horizontal"
-                android:text="TextView"
                 android:textAlignment="center"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"

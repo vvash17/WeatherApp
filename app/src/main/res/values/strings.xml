@@ -2,7 +2,7 @@
     <string name="app_name">WeatherApp</string>
     <string name="cities_base_url">https://restcountries.eu/</string>
     <string name="cities_endpoint">rest/v2/all?fields=name</string>
-    <string name="api_key">79e743db665a50b7ef279315f5d2531e</string>
+    <string name="api_key">fe6d5d8f71782f1c9022c8b301d8ec33</string>
     <string name="owa_base_url">https://api.openweathermap.org/data/2.5/</string>
 
     <!-- TODO: Remove or change this placeholder text -->
