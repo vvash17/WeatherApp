@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +16,10 @@ import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import com.vvash17company.weatherapp.R
 import com.vvash17company.weatherapp.models.CityWeatherData
+import com.vvash17company.weatherapp.models.additional.DayAndNightData
+import com.vvash17company.weatherapp.models.additional.HumidityData
+import com.vvash17company.weatherapp.models.additional.PrecipidationData
+import com.vvash17company.weatherapp.models.additional.WindSpeedData
 import java.util.*
 
 
@@ -71,24 +75,54 @@ class CityWeatherFragment : Fragment() {
             currentWeatherData.mainWeatherData.perceivedDegree.minus(273.15)
         perceived.text = "Perceived : " + "%.1f".format(perceivedCelsius) + "\t℃"
 
-        fragmentManager?.beginTransaction()?.add(
-            R.id.precipidationFrame,
-            PrecipitationFragment.newInstance(currentWeatherData.additionWeatherData.precipidation),
-            "precipidationFragment"
-        )?.add(
-            R.id.humidityFrame,
-            HumidityFragment.newInstance(currentWeatherData.additionWeatherData.humidity),
-            "humidityFragment"
-        )?.add(
-            R.id.windSpeedFrame,
-            WindSpeedFragment.newInstance(currentWeatherData.additionWeatherData.windSpeed),
-            "windSpeedFragment"
-        )?.add(
-            R.id.dayAndNightFrame,
-            DayAndNightFragment.newInstance(currentWeatherData.additionWeatherData.dayAndNight),
-            "dayAndNightFragment"
-        )?.commit()
+        initializePrecipidationLayout(view, currentWeatherData.additionWeatherData.precipidation)
+        initializeHumidityLayout(view, currentWeatherData.additionWeatherData.humidity)
+        initializeWindSpeedLayout(view, currentWeatherData.additionWeatherData.windSpeed)
+        initializeDayAndNightLayout(view, currentWeatherData.additionWeatherData.dayAndNight)
+
         return view
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initializePrecipidationLayout(view: View, precipidationData: PrecipidationData) {
+        val attributeName: TextView = view.findViewById(R.id.attributeNameP)
+        val attributeValue: TextView = view.findViewById(R.id.attributeValueP)
+        val icon: ImageView = view.findViewById(R.id.iconImageP)
+
+        attributeName.text = precipidationData.name
+        attributeValue.text = precipidationData.percentage.toString() + "%"
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initializeHumidityLayout(view: View, humidityData: HumidityData) {
+        val attributeName: TextView = view.findViewById(R.id.attributeNameH)
+        val attributeValue: TextView = view.findViewById(R.id.attributeValueH)
+        val icon: ImageView = view.findViewById(R.id.iconImageH)
+
+        attributeName.text = humidityData.name
+        attributeValue.text = humidityData.percentage.toString() + "%"
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun initializeWindSpeedLayout(view: View, windSpeedData: WindSpeedData) {
+        val attributeName: TextView = view.findViewById(R.id.attributeNameW)
+        val attributeValue: TextView = view.findViewById(R.id.attributeValueW)
+        var icon: ImageView = view.findViewById(R.id.iconImageW)
+
+        attributeName.text = windSpeedData.name
+        attributeValue.text = windSpeedData.double.toString() + "km/h"
+    }
+
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
+    private fun initializeDayAndNightLayout(view: View, dayAndNightData: DayAndNightData) {
+        val attributeName: TextView = view.findViewById(R.id.attributeNameD)
+        val attributeValue: TextView = view.findViewById(R.id.attributeValueD)
+        val icon: ImageView = view.findViewById(R.id.iconImageD)
+
+        val formatter = java.text.SimpleDateFormat("hh:mm a")
+        attributeName.text = dayAndNightData.name
+        attributeValue.text =
+            formatter.format(dayAndNightData.dayUnixTime) + " " + formatter.format(dayAndNightData.nightUnixTime)
     }
 
     companion object {

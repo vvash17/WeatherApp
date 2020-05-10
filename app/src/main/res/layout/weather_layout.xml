@@ -143,19 +143,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/afterCurrentWeatherPad">
 
-        <FrameLayout
-            android:id="@+id/windSpeedFrame"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/thirdGuideline"
-            app:layout_constraintStart_toStartOf="@id/secondGuideline"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/dayAndNightFrame"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dayAndNightLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -163,7 +152,229 @@
             app:layout_constraintStart_toStartOf="@id/thirdGuideline"
             app:layout_constraintTop_toTopOf="parent">
 
-        </FrameLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/upperGuidelineD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/lowerGuidelineD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.80" />
+
+            <ImageView
+                android:id="@+id/iconImageD"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/upperGuidelineD"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+
+            <TextView
+                android:id="@+id/attributeNameD"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/lowerGuidelineD"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/upperGuidelineD" />
+
+            <TextView
+                android:id="@+id/attributeValueD"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/lowerGuidelineD" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/windSpeedLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/thirdGuideline"
+            app:layout_constraintStart_toStartOf="@id/secondGuideline"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/upperGuidelineW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/lowerGuidelineW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.80" />
+
+            <ImageView
+                android:id="@+id/iconImageW"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/upperGuidelineW"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+
+            <TextView
+                android:id="@+id/attributeNameW"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/lowerGuidelineW"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/upperGuidelineW" />
+
+            <TextView
+                android:id="@+id/attributeValueW"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/lowerGuidelineW" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/humidityLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/secondGuideline"
+            app:layout_constraintStart_toStartOf="@id/firstGuideline"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/upperGuidelineH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/lowerGuidelineH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.80" />
+
+            <ImageView
+                android:id="@+id/iconImageH"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/upperGuidelineH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+
+            <TextView
+                android:id="@+id/attributeNameH"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/lowerGuidelineH"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/upperGuidelineH" />
+
+            <TextView
+                android:id="@+id/attributeValueH"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/lowerGuidelineH" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/precipidationLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/firstGuideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/upperGuidelineP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/lowerGuidelineP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.80" />
+
+            <ImageView
+                android:id="@+id/iconImageP"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/upperGuidelineP"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/divider_horizontal_bright" />
+
+            <TextView
+                android:id="@+id/attributeNameP"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@id/lowerGuidelineP"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/upperGuidelineP" />
+
+            <TextView
+                android:id="@+id/attributeValueP"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_horizontal"
+                android:text="TextView"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/lowerGuidelineP" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/firstGuideline"
@@ -185,28 +396,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.75" />
-
-        <FrameLayout
-            android:id="@+id/precipidationFrame"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/firstGuideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/humidityFrame"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/secondGuideline"
-            app:layout_constraintStart_toStartOf="@id/firstGuideline"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
