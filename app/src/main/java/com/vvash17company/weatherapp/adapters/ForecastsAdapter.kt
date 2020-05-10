@@ -59,10 +59,11 @@ class ForecastsAdapter(val forecastsData: ForecastsData) :
     @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onBindViewHolder(holder: ForecastsAdapter.ViewHolder, position: Int) {
         val weatherData: WeatherData = forecastsData.forecasts[position]
-        val formatter = SimpleDateFormat("hh:mm a")
+        val formatter = SimpleDateFormat("dd/MM hh:mm a")
 
-        holder.time.text = formatter.format(weatherData.unixTime)
-        holder.degrees.text = "%.1f".format(weatherData.weatherDetails.realDegree.minus(273.15)) + "\t℃"
+        holder.time.text = formatter.format(weatherData.unixTime * 1000)
+        holder.degrees.text =
+            "%.1f".format(weatherData.weatherDetails.realDegree.minus(273.15)) + "\t℃"
         setIconImage(holder.icon, weatherData.weather[0].iconId)
     }
 }

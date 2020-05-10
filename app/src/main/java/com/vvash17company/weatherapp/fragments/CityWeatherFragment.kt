@@ -198,11 +198,11 @@ class CityWeatherFragment : Fragment() {
         additionalWeatherLayout.background = resources.getDrawable(R.drawable.border, null)
 
         cityName.text = mainWeatherData.cityName
-        val currentDate = Date(mainWeatherData.unixTime)
+        val currentDate = Date(mainWeatherData.unixTime * 1000)
 
 
-        val dayDate = Date(additionalWeatherData.dayAndNight.dayUnixTime)
-        val nightDate = Date(additionalWeatherData.dayAndNight.nightUnixTime)
+        val dayDate = Date(additionalWeatherData.dayAndNight.dayUnixTime * 1000)
+        val nightDate = Date(additionalWeatherData.dayAndNight.nightUnixTime * 1000)
 
         if (currentDate.after(dayDate) and currentDate.before(nightDate)) {
             currentWeatherLayout.setBackgroundColor(Color.rgb(255, 102, 0))
@@ -215,7 +215,7 @@ class CityWeatherFragment : Fragment() {
             )
         }
 
-        time.text = SimpleDateFormat("EE DD MMM hh:mm a").format(currentDate)
+        time.text = SimpleDateFormat("EE dd MMM hh:mm a").format(currentDate)
         val degreesCelsius: Double? =
             mainWeatherData.realDegree.minus(273.15)
         degrees.text = "%.1f".format(degreesCelsius) + "\t℃"
@@ -302,7 +302,9 @@ class CityWeatherFragment : Fragment() {
         val formatter = java.text.SimpleDateFormat("hh:mm a")
         attributeName.text = dayAndNightData.name
         attributeValue.text =
-            formatter.format(dayAndNightData.dayUnixTime) + " " + formatter.format(dayAndNightData.nightUnixTime)
+            formatter.format(dayAndNightData.dayUnixTime * 1000) + " " + formatter.format(
+                dayAndNightData.nightUnixTime * 1000
+            )
     }
 
     companion object {
